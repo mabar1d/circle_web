@@ -45,6 +45,15 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- BEGIN THEME LAYOUT STYLES -->
     <!-- END THEME LAYOUT STYLES -->
     <link rel="shortcut icon" href="favicon.ico" />
+    <style>
+        div.backstretch {
+            -webkit-filter: blur(3px);
+            -moz-filter: blur(3px);
+            -o-filter: blur(3px);
+            -ms-filter: blur(3px);
+            filter: blur(3px);
+        }
+    </style>
 </head>
 <!-- END HEAD -->
 
@@ -118,16 +127,36 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END CORE PLUGINS -->
     <!-- BEGIN PAGE LEVEL PLUGINS -->
     <script src="{{asset('metronic/global/plugins/countdown/jquery.countdown.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('metronic/global/plugins/backstretch/jquery.backstretch.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('metronic/global/plugins/backstretch/jquery.backstretch.js')}}" type="text/javascript"></script>
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN THEME GLOBAL SCRIPTS -->
     <script src="{{asset('metronic/global/scripts/app.min.js')}}" type="text/javascript"></script>
     <!-- END THEME GLOBAL SCRIPTS -->
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
-    <script src="{{asset('metronic/pages/scripts/coming-soon.js')}}" type="text/javascript"></script>
+    <!--<script src="{{asset('metronic/pages/scripts/coming-soon.js')}}" type="text/javascript"></script>-->
     <!-- END PAGE LEVEL SCRIPTS -->
     <!-- BEGIN THEME LAYOUT SCRIPTS -->
     <!-- END THEME LAYOUT SCRIPTS -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var austDay = new Date();
+            austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
+            $('#defaultCountdown').countdown({
+                until: austDay
+            });
+            $('#year').text(austDay.getFullYear());
+
+            $.backstretch([
+                "{{asset('metronic/pages/media/bg/AOV.jpeg')}}",
+                "{{asset('metronic/pages/media/bg/COD.jpeg')}}",
+                "{{asset('metronic/pages/media/bg/MOBILE_LEGENDS.jpeg')}}",
+                "{{asset('metronic/pages/media/bg/PUBG.jpeg')}}"
+            ], {
+                fade: 1000,
+                duration: 10000
+            });
+        });
+    </script>
 </body>
 
 </html>
