@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TournamentController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,4 @@ Route::get('/', function () {
 
 Route::get('/look_tournament', [TournamentController::class, 'lookTournament']);
 Route::post('/get_tournament_match', [TournamentController::class, 'getTournamentMatch']);
+Route::get('/login', [LoginController::class, 'index']);
